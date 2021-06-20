@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="stylesheet/css" src="style.css"></style>
+</head>
+<body>
+    <video id="video" width="640" height="480" autoplay>
+</body>
+<script>
+  // navigator.getUserMedia =
+//   navigator.getUserMedia ||
+//   navigator.webkitGetUserMedia ||
+//   navigator.mozGetUserMedia ||
+//   navigator.msGetUserMedia;
+// if (navigator.getUserMedia) {
+//   navigator.getUserMedia(
+//     {
+//       audio: false,
+//       video: true,
+//     },
+//     function () {
+//         webcam()
+//     },
+//     function (e) {
+//       console.log("Already using camera!!");
+//     }
+//   );
+// }
+
+// function webcam(){
+//     video = document.querySelector(".videoPreview");
+
+//     var successCallback = function (stream) {
+//       video.src = stream;
+//     };
+//     var errorCallback = function (error) {
+//       if (error.name == "NotAllowedError") {
+//         alert("Please allow access to the camera");
+//         navigator.mediaDevices
+//           .getUserMedia({ video: true, audio: false })
+//           .then(successCallback, errorCallback);
+//       }
+//     };
+//     navigator.mediaDevices
+//       .getUserMedia({ video: true, audio: false })
+//       .then(successCallback, errorCallback);
+// }
+
+// Grab elements, create settings, etc.
+var video = document.getElementById('video');
+
+// Get access to the camera!
+if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+    // Not adding `{ audio: true }` since we only want video now
+    navigator.mediaDevices.getUserMedia({ video: true }).then(function(stream) {
+        //video.src = window.URL.createObjectURL(stream);
+        video.srcObject = stream;
+        video.play();
+    });
+}
+  
+  </script>
+</html>
