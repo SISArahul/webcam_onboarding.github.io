@@ -6,25 +6,70 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        body{
-        margin: 0;
+body {
+  margin: 0;
   padding: 0;
   height: 100%;
-  width: 100%;}   
+  width: 100%;
+}
 
-    #videoContainer , #video   {
-         position: fixed;
-    height: 100%;
-    width: 100%;
-    object-fit: cover;}
-        #video{
-        transform: scaleX(-1);
-    filter: FlipH;}
+#videoContainer,
+#video {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+#video {
+  transform: scaleX(-1);
+  filter: flipH;
+}
+
+.buttonsForcapture {
+  position: absolute;
+  bottom: 3em;
+  width: 100%;
+  text-align: center;
+}
+
+.startUploadButton {
+  padding: 0.25rem 0.75rem !important;
+  background-color: #3e55dc !important;
+  border-color: #3e55dc !important;
+  color: #ffffff;
+  outline: none;
+  background: #3e55dc;
+  box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.52);
+  border-radius: 8px;
+}
+
+.cancelButton {
+  padding: 0.25rem 0.75rem !important;
+  color: #383838;
+  outline: none;
+  background: rgba(255, 255, 255, 0.7) !important;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1) !important;
+  border-radius: 8px;
+  border-color: rgba(255, 255, 255, 0.7) !important;
+}
+
     </style>
 </head>
 <body>
-   <div id="videoContainer">
+     <div id="videoContainer">
         <video id="video" autoplay>
+    </div>
+    <div>
+        <span class="TimerForCapture"></span>
+    </div>
+    <div class="buttonsForcapture">
+
+        <button  type="button" class="cancelButton">Cancel</button>
+        <button type="button" class="startUploadButton">Start</button>
+
+    </div>
+    <div class="infoForCapture">
+
     </div>
 </body>
 <script>
