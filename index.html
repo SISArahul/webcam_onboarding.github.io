@@ -6,17 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-    #video{
-   height: 100%;
-    max-width: 100%;
-}
+   
 
-#videoContainer{
-    box-sizing: border-box;
+    #videoContainer , #video   {
+         position: fixed;
     height: 100%;
-    overflow: hidden;
-    width: 100%;
-}
+    width: 100%:
+    object-fit: cover;}
+        #video{
+        transform: scaleX(-1);
+    filter: FlipH;}
     </style>
 </head>
 <body>
