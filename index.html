@@ -5,13 +5,29 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style type="stylesheet/css" src="style.css"></style>
+    <style>
+    #video{
+    width:100%;
+    height: 100%;
+}
+
+#videoContainer{
+    width:95vw;
+    height:95vh;
+}
+    </style>
 </head>
 <body>
-    <video id="video" width="640" height="480" autoplay>
+   <div id="videoContainer">
+        <video id="video" autoplay>
+    </div>
 </body>
 <script>
-  // navigator.getUserMedia =
+ 
+  
+
+if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+    // navigator.getUserMedia =
 //   navigator.getUserMedia ||
 //   navigator.webkitGetUserMedia ||
 //   navigator.mozGetUserMedia ||
@@ -62,6 +78,10 @@ if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
         video.play();
     });
 }
+  }else{
+    // false for not mobile device
+    alert("Please open the link in mobile device");
+  }
   
   </script>
 </html>
