@@ -82,27 +82,20 @@ body {
     </style>
 </head>
 <body>
-  <div id="container">
-      <video id="gum" playsinline autoplay muted></video>
-      <video id="recorded" playsinline loop></video>
+   <div id="videoContainer">
+        <video id="video" autoplay>
+    </div>
+    <div>
+        <span class="TimerForCapture"></span>
+    </div>
+    <div class="buttonsForcapture">
+        <button  type="button" id="stop-record" class="cancelButton" onclick="stopRecording()">Cancel</button>
+        <button type="button" id="start-record" class="startUploadButton" onclick="startRecording()">Start</button>
 
-      <div>
-        <button id="start">Start camera</button>
-        <button id="record" disabled>Record</button>
-        <button id="play" disabled>Play</button>
-        <button id="download">Download</button>
-      </div>
-
-      <div>
-        <h4>Media Stream Constraints options</h4>
-        <p>
-          Echo cancellation: <input type="checkbox" id="echoCancellation" />
-        </p>
-      </div>
-
-      <div>
-        <span id="errorMsg"></span>
-      </div>
+    </div>
+    <div class="infoForCapture">
+        <span>10 sec face registration video will captured, place your face inside the box</span>
+        <a id="download-video" style="position:absolute;">Download Video</a>
     </div>
 </body>
 <script>
