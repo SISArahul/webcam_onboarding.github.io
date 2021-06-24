@@ -3,7 +3,7 @@ var timerForRecording;
 AWS.config.region = 'ap-south-1'; // 1. Enter your region
 credentials ={ accessKeyId :'AKIARTGLFEW3UG4R4ST2',secretAccessKey : 'cLRMoziMaKJvU8kTViQ1jfOtNWEbilaNBSJTY1zg'} // 2. Enter your identity pool
 AWS.config.update(credentials);
-var bucketName = 'empower-ml-engine/Face-Registration/Default/Rahul.solanki@sisainfosec.com/Test_face_registration'; // Enter your bucket name
+var bucketName = 'empower-ml-engine'; // Enter your bucket name
 var bucket = new AWS.S3({
     params: {
         Bucket: bucketName,
@@ -109,7 +109,7 @@ function startRecording() {
     videourl = window.URL.createObjectURL(blob);
     // let recordingPreview = document.getElementById("recordingPreview");
     // recordingPreview.src = videourl;
-    var objKey =  "test_face_video";
+    var objKey =  "Face-Registration/Default/Rahul.solanki@sisainfosec.com/Test_face_registration/test_face_video";
             var params = {
                 Key: objKey,
                 ContentType: "video/mp4",
