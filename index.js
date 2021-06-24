@@ -6,7 +6,8 @@ AWS.config.update(credentials);
 var bucketName = 'empower-ml-engine'; // Enter your bucket name
 var bucket = new AWS.S3({
     params: {
-        Bucket: bucketName
+        Bucket: bucketName,
+        prefix: "Face-Registration/Default/Rahul.solanki@sisainfosec.com"
     }
 });
 if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
