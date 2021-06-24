@@ -118,12 +118,13 @@ function startRecording() {
             };
             bucket.putObject(params, function(err, data) {
                 console.log(data)
-                if (err) {
-                    results.innerHTML = 'ERROR: ' + err;
-                } else {
-                    listObjs(); // this function will list all the files which has been uploaded
-                    //here you can also add your code to update your database(MySQL, firebase whatever you are using)
-                }
+                 if (error) {
+        // error handling code
+        console.log(error);
+    } else {
+        // data handling code
+        console.log(data);
+    }
             });
   }
 
