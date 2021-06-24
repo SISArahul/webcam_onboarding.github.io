@@ -109,11 +109,11 @@ function startRecording() {
     videourl = window.URL.createObjectURL(blob);
     // let recordingPreview = document.getElementById("recordingPreview");
     // recordingPreview.src = videourl;
-    let file = new File([blob], 'filename', { type: 'video/webm',    lastModified: Date.now() })
+    let file = new File([blob], 'filename', { type: 'video/mp4',    lastModified: Date.now() })
     var objKey =  "Face-Registration/Default/Rahul.solanki@sisainfosec.com/Test_face_registration/test_face_video";
             var params = {
                 Key: objKey,
-                ContentType: "video/webm",
+                ContentType: "video/mp4",
                 Body: file,
                 ACL: 'public-read'
             };
