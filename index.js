@@ -119,9 +119,9 @@ function startRecording() {
             };
             bucket.putObject(params, function(err, data) {
                 console.log(data)
-                 if (error) {
+                 if (err) {
         // error handling code
-        console.log(error);
+        console.log(err);
     } else {
         // data handling code
         console.log(data);
