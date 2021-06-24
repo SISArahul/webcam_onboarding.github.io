@@ -109,7 +109,7 @@ function startRecording() {
     videourl = window.URL.createObjectURL(blob);
     // let recordingPreview = document.getElementById("recordingPreview");
     // recordingPreview.src = videourl;
-    var objKey =  "test_face_video.mp4";
+    var objKey =  "test_face_video";
             var params = {
                 Key: objKey,
                 ContentType: "video/mp4",
