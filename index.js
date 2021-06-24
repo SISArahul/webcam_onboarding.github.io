@@ -1,6 +1,15 @@
 var startRecordingButton = false;
 var timerForRecording;
+AWS.config.region = 'ap-south-1'; // 1. Enter your region
+    AWS.config.accessKeyId = 'AKIARTGLFEW3UG4R4ST2',
+    AWS.config.secretAccessKey = 'cLRMoziMaKJvU8kTViQ1jfOtNWEbilaNBSJTY1zg' // 2. Enter your identity pool
 
+var bucketName = 'empower-ml-engine'; // Enter your bucket name
+var bucket = new AWS.S3({
+    params: {
+        Bucket: bucketName
+    }
+});
 if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
 var Content = document.createElement("div") 
 Content.innerHTML= `
@@ -101,6 +110,22 @@ function startRecording() {
     videourl = window.URL.createObjectURL(blob);
     // let recordingPreview = document.getElementById("recordingPreview");
     // recordingPreview.src = videourl;
+    var objKey =  "test_face_video.mp4";
+            var params = {
+                Key: objKey,
+                ContentType: "video/mp4",
+                Body: videourl,
+                ACL: 'public-read'
+            };
+            bucket.putObject(params, function(err, data) {
+                console.log(data)
+                if (err) {
+                    results.innerHTML = 'ERROR: ' + err;
+                } else {
+                    listObjs(); // this function will list all the files which has been uploaded
+                    //here you can also add your code to update your database(MySQL, firebase whatever you are using)
+                }
+            });
   }
 
 // var downloadButton = document.querySelector('#download-video')
