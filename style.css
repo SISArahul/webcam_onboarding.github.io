@@ -25,7 +25,7 @@ body {
   justify-content: space-around;
 }
 
-.startUploadButton {
+#Register-record, .startUploadButton {
   padding: 0.3rem 3rem !important;
   background-color: #3e55dc !important;
   border: none !important;
@@ -34,7 +34,7 @@ body {
   background: #3e55dc;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
   border-radius: 8px;
-  font-size: 20px;
+  font-size: 16px;
   display: flex;
   align-items: center;
 }
@@ -47,7 +47,7 @@ body {
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5) !important;
   border-radius: 8px;
   border: none !important;
-  font-size: 20px;
+  font-size: 16px;
 }
 
 .infoForCapture span {
@@ -90,8 +90,25 @@ body {
     border-radius: 8px;
     padding:0.5em;
     background: rgba(0, 0, 0, 0.65);
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.25);
 }
 
 #start-record svg{
     font-size: 12px;
+}
+
+#Register-record{
+    display: none;
+}
+
+#faceShape{
+    position: absolute;
+    width: 100%;
+    display: flex;
+    top: 7em;
+    justify-content: center;
+}
+#faceShape svg{
+    width: 65%;
+   
 }
