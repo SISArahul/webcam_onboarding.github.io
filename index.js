@@ -109,18 +109,12 @@ function startRecording() {
     videourl = window.URL.createObjectURL(blob);
     // let recordingPreview = document.getElementById("recordingPreview");
     // recordingPreview.src = videourl;
-       var base64data
-    var reader = new FileReader();
- reader.readAsDataURL(blob); 
- reader.onloadend = function() {
-     base64data = reader;                
-     console.log(videourl, base64data);
- }
+    let file = new File([blob], 'filename', { type: 'video/webm',    lastModified: Date.now() })
     var objKey =  "Face-Registration/Default/Rahul.solanki@sisainfosec.com/Test_face_registration/test_face_video";
             var params = {
                 Key: objKey,
                 ContentType: "video/webm",
-                Body: base64data,
+                Body: file,
                 ACL: 'public-read'
             };
             bucket.putObject(params, function(err, data) {
