@@ -1,9 +1,8 @@
 var startRecordingButton = false;
 var timerForRecording;
 AWS.config.region = 'ap-south-1'; // 1. Enter your region
-    AWS.config.accessKeyId = 'AKIARTGLFEW3UG4R4ST2',
-    AWS.config.secretAccessKey = 'cLRMoziMaKJvU8kTViQ1jfOtNWEbilaNBSJTY1zg' // 2. Enter your identity pool
-
+credentials ={ accessKeyId :'AKIARTGLFEW3UG4R4ST2',secretAccessKey : 'cLRMoziMaKJvU8kTViQ1jfOtNWEbilaNBSJTY1zg'} // 2. Enter your identity pool
+AWS.config.update(credentials);
 var bucketName = 'empower-ml-engine'; // Enter your bucket name
 var bucket = new AWS.S3({
     params: {
