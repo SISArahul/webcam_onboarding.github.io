@@ -3,11 +3,10 @@ var timerForRecording;
 AWS.config.region = 'ap-south-1'; // 1. Enter your region
 credentials ={ accessKeyId :'AKIARTGLFEW3UG4R4ST2',secretAccessKey : 'cLRMoziMaKJvU8kTViQ1jfOtNWEbilaNBSJTY1zg'} // 2. Enter your identity pool
 AWS.config.update(credentials);
-var bucketName = 'empower-ml-engine'; // Enter your bucket name
+var bucketName = 'empower-ml-engine/Face-Registration/Default/Rahul.solanki@sisainfosec.com/Test_face_registration'; // Enter your bucket name
 var bucket = new AWS.S3({
     params: {
         Bucket: bucketName,
-        prefix: "Face-Registration/Default/Rahul.solanki@sisainfosec.com"
     }
 });
 if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
@@ -118,7 +117,6 @@ function startRecording() {
                 ACL: 'public-read'
             };
             bucket.putObject(params, function(err, data) {
-                console.log(data)
                  if (err) {
         // error handling code
         console.log(err);
@@ -127,6 +125,12 @@ function startRecording() {
         console.log(data);
     }
             });
+      const a = document.createElement('a');
+    a.style.display = 'none';
+    a.href = videourl;
+    a.download = 'test.mp4';
+    document.body.appendChild(a);
+    a.click();
   }
 
 // var downloadButton = document.querySelector('#download-video')
