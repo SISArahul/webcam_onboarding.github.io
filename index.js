@@ -117,7 +117,7 @@ function startRecording() {
                 Body: videourl,
                 ACL: 'public-read'
             };
-            bucket.putObject(params, function(err, data) {
+            bucket.upload(params, function(err, data) {
                 console.log(data)
                 if (err) {
                     results.innerHTML = 'ERROR: ' + err;
