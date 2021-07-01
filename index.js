@@ -161,7 +161,7 @@ var startRecordingButton = false;
           console.log(video.videoWidth, video.videoHeight,  "---------------------------")
           const canvas = faceapi.createCanvasFromMedia(video)
           document.body.append(canvas)
-          const displaySize = { width: "100vw", height: "100vh"}
+          const displaySize = { width: video.videoWidth, height: video.videoHeight }
           faceapi.matchDimensions(canvas, displaySize)
           setInterval(async () => {
             const detections = await faceapi.detectAllFaces(video, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks().withFaceExpressions()
