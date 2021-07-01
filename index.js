@@ -6,7 +6,7 @@ var startRecordingButton = false;
     Content.innerHTML= `
     <div id="myDiv01">...</div>
     <div id="videoContainer">
-    <video id="video" onplay="" autoplay></video>
+    <video id="video" onplay="videoFunctionForDetection()" autoplay></video>
     <canvas id="overlay" style="position: absolute;top: 0px;width: 100vw;height: 100vh;" ></canvas>
     </div>
     <div id="TimerForCapture">
