@@ -69,7 +69,6 @@ var startRecordingButton = false;
     //Functions to record video
     
       video.addEventListener('play', () => {
-        setTimeout(function(){
           const canvas = faceapi.createCanvasFromMedia(video)
           document.body.append(canvas)
           const displaySize = { width: 1280, height: 720 }
@@ -82,7 +81,6 @@ var startRecordingButton = false;
             faceapi.draw.drawFaceLandmarks(canvas, resizedDetections)
             faceapi.draw.drawFaceExpressions(canvas, resizedDetections)
           }, 100)
-        },2000)
        
       })
     
