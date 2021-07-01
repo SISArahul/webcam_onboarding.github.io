@@ -4,10 +4,8 @@ var startRecordingButton = false;
     if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
     var Content = document.createElement("div") 
     Content.innerHTML= `
-    <div id="myDiv01">...</div>
     <div id="videoContainer">
     <video id="video" autoplay></video>
-    <canvas id="overlay" style="position: absolute;top: 0px;width: 100vw;height: 100vh;" ></canvas>
     </div>
     <div id="TimerForCapture">
     <span></span>
