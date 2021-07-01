@@ -56,8 +56,8 @@ var startRecordingButton = false;
                 alert("Please allow access to the camera");
                 navigator.mediaDevices
                   .getUserMedia({ video: {
-                    width: { ideal: 4096 },
-                    height: { ideal: 2160 }
+                    width: { ideal: 1280 },
+                    height: { ideal: 720 }
                   }, audio: false })
                   .then(successCallback, errorCallback);
               }
@@ -66,7 +66,6 @@ var startRecordingButton = false;
                   .getUserMedia({ video: {}, audio: false })
                   .then(successCallback, errorCallback);
         }
-        videoFunctionForDetection(video)
     }
 
     //Functions to record video
@@ -156,24 +155,23 @@ var startRecordingButton = false;
         //   }
         // });
       }
-      function videoFunctionForDetection (video){
-
-        const canvas = faceapi.createCanvasFromMedia(video)
-        document.body.append(canvas)
-        const displaySize = { width: video.width, height: video.height }
-        faceapi.matchDimensions(canvas, displaySize)
-        setInterval(async () => {
-          const detections = await faceapi.detectAllFaces(video, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks().withFaceExpressions()
-          const resizedDetections = faceapi.resizeResults(detections, displaySize)
-          canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height)
-          faceapi.draw.drawDetections(canvas, resizedDetections)
-          faceapi.draw.drawFaceLandmarks(canvas, resizedDetections)
-          faceapi.draw.drawFaceExpressions(canvas, resizedDetections)
-        }, 100)
-
-  
-    }
-
+      video.addEventListener('play', () => {
+        setTimeout(function(){
+          const canvas = faceapi.createCanvasFromMedia(video)
+          document.body.append(canvas)
+          const displaySize = { width: video.width, height: video.height }
+          faceapi.matchDimensions(canvas, displaySize)
+          setInterval(async () => {
+            const detections = await faceapi.detectAllFaces(video, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks().withFaceExpressions()
+            const resizedDetections = faceapi.resizeResults(detections, displaySize)
+            canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height)
+            faceapi.draw.drawDetections(canvas, resizedDetections)
+            faceapi.draw.drawFaceLandmarks(canvas, resizedDetections)
+            faceapi.draw.drawFaceExpressions(canvas, resizedDetections)
+          }, 100)
+        },2000)
+       
+      })
     
     // var downloadButton = document.querySelector('#download-video')
     //   downloadButton.addEventListener('click', () => {
