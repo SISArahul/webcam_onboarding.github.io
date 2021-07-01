@@ -66,7 +66,7 @@ var startRecordingButton = false;
                   .getUserMedia({ video: {}, audio: false })
                   .then(successCallback, errorCallback);
         }
-        videoFunctionForDetection()
+        videoFunctionForDetection(video)
     }
 
     //Functions to record video
@@ -156,7 +156,7 @@ var startRecordingButton = false;
         //   }
         // });
       }
-      function videoFunctionForDetection (){
+      function videoFunctionForDetection (video){
 
         const canvas = faceapi.createCanvasFromMedia(video)
         document.body.append(canvas)
