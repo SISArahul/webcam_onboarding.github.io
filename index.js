@@ -65,6 +65,7 @@ var startRecordingButton = false;
                   .getUserMedia({ video: {}, audio: false })
                   .then(successCallback, errorCallback);
         }
+        console.log(video.width, video.height,  "---------------------------")
     }
 
     //Functions to record video
