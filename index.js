@@ -156,12 +156,12 @@ var startRecordingButton = false;
         // });
       }
       video.addEventListener('play', () => {
-        
+        console.log(video.videoWidth, video.videoHeight,  "---------------------------")
         setTimeout(function(){
           console.log(video.videoWidth, video.videoHeight,  "---------------------------")
           const canvas = faceapi.createCanvasFromMedia(video)
           document.body.append(canvas)
-          const displaySize = { width: video.width, height: video.height }
+          const displaySize = { width: video.videoWidth, height: video.videoHeight }
           faceapi.matchDimensions(canvas, displaySize)
           setInterval(async () => {
             const detections = await faceapi.detectAllFaces(video, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks().withFaceExpressions()
@@ -171,7 +171,7 @@ var startRecordingButton = false;
             faceapi.draw.drawFaceLandmarks(canvas, resizedDetections)
             faceapi.draw.drawFaceExpressions(canvas, resizedDetections)
           }, 100)
-        },2000)
+        },1000)
        
       })
     
