@@ -4,10 +4,8 @@ var startRecordingButton = false;
     if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
     var Content = document.createElement("div") 
     Content.innerHTML= `
-    <div id="myDiv01">...</div>
     <div id="videoContainer">
     <video id="video" autoplay></video>
-    <canvas id="overlay" style="position: absolute;top: 0px;width: 100vw;height: 100vh;" ></canvas>
     </div>
     <div id="TimerForCapture">
     <span></span>
@@ -70,91 +68,6 @@ var startRecordingButton = false;
 
     //Functions to record video
     
-
-    
-    function startRecording() {
-        
-        recordedBlobs = [];
-        let options = {mimeType: 'video/webm;codecs=vp9,opus'};
-        
-        try {
-          mediaRecorder = new MediaRecorder(window.stream, options);
-        } catch (e) {
-          //console.error('Exception while creating MediaRecorder:', e);
-          errorMsgElement.innerHTML = `Exception while creating MediaRecorder: ${JSON.stringify(e)}`;
-          return;
-        }
-      
-        //console.log('Created MediaRecorder', mediaRecorder, 'with options', options);
-        mediaRecorder.onstop = (event) => {
-          //console.log('Recorder stopped: ', event);
-          //console.log('Recorded Blobs: ', recordedBlobs);
-        };
-        mediaRecorder.ondataavailable = handleDataAvailable;
-        mediaRecorder.start();
-        //console.log('MediaRecorder started', mediaRecorder.state);
-        startTimerForRecording();
-      }
-      
-      function stopRecording() {
-        mediaRecorder.stop();
-        $("#start-record").html(`Start`)
-        
-      }
-    
-      function cancelRecording(){
-          if(mediaRecorder.state=="inactive"){
-              console.log("recording already stoped")
-              recordedBlobs = [];
-            $("#start-record").html(`Start`)
-            $("#start-record").css("display","flex")
-            $("#Register-record").css("display","none")
-          }
-          else{
-            videourl='';
-            mediaRecorder.stop();
-            recordedBlobs = [];
-            $("#start-record").html(`Start`)
-            $("#TimerForCapture").css('display', 'none')
-            clearInterval(timerForRecording)
-          }
-      }
-    
-      function RegisterRecording(){
-        const blob = new Blob(recordedBlobs, {type: 'video/webm'});
-        videourl = window.URL.createObjectURL(blob);
-        // let recordingPreview = document.getElementById("recordingPreview");
-        // recordingPreview.src = videourl;
-        let file = new File([blob], 'filename', { type: 'video/mp4',    lastModified: Date.now() })
-        var form = new FormData();
-        form.append("VideoFile", file);
-        const a = document.createElement('a');
-        a.style.display = 'none';
-        a.href = videourl;
-        a.download = 'test.mp4';
-        document.body.appendChild(a);
-        a.click();
-        // var settings = {
-        //   "url": location.origin+"/account/FaceRegistration",
-        //   "method": "POST",
-        //   "timeout": 0,
-        //   "processData": false,
-        //   "mimeType": "multipart/form-data",
-        //   "contentType": false,
-        //   "data": form
-        // };
-        // abp.ui.setBusy()
-        // $.ajax(settings).done(function (response) {
-        //     abp.ui.clearBusy()
-        //   console.log(JSON.parse(response).success);
-        //   if(JSON.parse(response).success){
-        //     abp.notify.success(JSON.parse(response).result)
-        //   }
-        //   else{
-        //     abp.notify.error(JSON.parse(response).result) 
-        //   }
-        // });
-      }
       video.addEventListener('play', () => {
         setTimeout(function(){
           const canvas = faceapi.createCanvasFromMedia(video)
@@ -188,32 +101,7 @@ var startRecordingButton = false;
     //     // }, 100);
     //   });
     
-      function handleDataAvailable(event) {
-        //console.log('handleDataAvailable', event);
-        if (event.data && event.data.size > 0) {
-          recordedBlobs.push(event.data);
-        }
-      }
-      function startTimerForRecording(){
-        
-        var count = 0;
-          timerForRecording = setInterval(function(){
-            count++
-            $("#TimerForCapture").html("<span>"+count+"</span>")
-            $("#TimerForCapture").css('display', 'flex')
-            $("#start-record").html(`${loadingIcon}  Recording`)
-            $("#stop-record").css('display', 'block')
-            //console.log(count)
-            if(count>=10){
-            clearInterval(timerForRecording)
-            stopRecording()
-            $("#TimerForCapture span").css('background', '#31CE2E')
-            $("#start-record").css("display","none")
-            $("#Register-record").css("display","flex")
-          }
-          }, 1000)
-          
-      }
+     
       }else{
         // false for not mobile device
         alert("Please open the link in mobile device");
