@@ -6,7 +6,7 @@ var startRecordingButton = false;
     Content.innerHTML= `
     <div id="myDiv01">...</div>
     <div id="videoContainer">
-    <video id="video" onplay="" autoplay></video>
+    <video id="video" autoplay></video>
     <canvas id="overlay" style="position: absolute;top: 0px;width: 100vw;height: 100vh;" ></canvas>
     </div>
     <div id="TimerForCapture">
@@ -55,14 +55,18 @@ var startRecordingButton = false;
               if (error.name == "NotAllowedError") {
                 alert("Please allow access to the camera");
                 navigator.mediaDevices
-                  .getUserMedia({ video: true, audio: false })
+                  .getUserMedia({ video: {
+                    width: { ideal: 4096 },
+                    height: { ideal: 2160 }
+                  }, audio: false })
                   .then(successCallback, errorCallback);
               }
             };
             navigator.mediaDevices
-                  .getUserMedia({ video: true, audio: false })
+                  .getUserMedia({ video: {}, audio: false })
                   .then(successCallback, errorCallback);
         }
+        videoFunctionForDetection()
     }
 
     //Functions to record video
@@ -125,27 +129,32 @@ var startRecordingButton = false;
         let file = new File([blob], 'filename', { type: 'video/mp4',    lastModified: Date.now() })
         var form = new FormData();
         form.append("VideoFile", file);
-        
-        var settings = {
-          "url": location.origin+"/account/FaceRegistration",
-          "method": "POST",
-          "timeout": 0,
-          "processData": false,
-          "mimeType": "multipart/form-data",
-          "contentType": false,
-          "data": form
-        };
-        abp.ui.setBusy()
-        $.ajax(settings).done(function (response) {
-            abp.ui.clearBusy()
-          console.log(JSON.parse(response).success);
-          if(JSON.parse(response).success){
-            abp.notify.success(JSON.parse(response).result)
-          }
-          else{
-            abp.notify.error(JSON.parse(response).result) 
-          }
-        });
+        const a = document.createElement('a');
+        a.style.display = 'none';
+        a.href = videourl;
+        a.download = 'test.mp4';
+        document.body.appendChild(a);
+        a.click();
+        // var settings = {
+        //   "url": location.origin+"/account/FaceRegistration",
+        //   "method": "POST",
+        //   "timeout": 0,
+        //   "processData": false,
+        //   "mimeType": "multipart/form-data",
+        //   "contentType": false,
+        //   "data": form
+        // };
+        // abp.ui.setBusy()
+        // $.ajax(settings).done(function (response) {
+        //     abp.ui.clearBusy()
+        //   console.log(JSON.parse(response).success);
+        //   if(JSON.parse(response).success){
+        //     abp.notify.success(JSON.parse(response).result)
+        //   }
+        //   else{
+        //     abp.notify.error(JSON.parse(response).result) 
+        //   }
+        // });
       }
     
     // var downloadButton = document.querySelector('#download-video')
