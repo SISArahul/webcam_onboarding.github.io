@@ -65,7 +65,7 @@ var startRecordingButton = false;
                   .getUserMedia({ video: {}, audio: false })
                   .then(successCallback, errorCallback);
         }
-        console.log(video.width, video.height,  "---------------------------")
+        console.log(video.videoWidth, video.videoHeight,  "---------------------------")
     }
 
     //Functions to record video
@@ -158,7 +158,7 @@ var startRecordingButton = false;
       video.addEventListener('play', () => {
         
         setTimeout(function(){
-          console.log(video.width, video.height,  "---------------------------")
+          console.log(video.videoWidth, video.videoHeight,  "---------------------------")
           const canvas = faceapi.createCanvasFromMedia(video)
           document.body.append(canvas)
           const displaySize = { width: video.width, height: video.height }
