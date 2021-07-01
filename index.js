@@ -6,7 +6,7 @@ var startRecordingButton = false;
     Content.innerHTML= `
     <div id="myDiv01">...</div>
     <div id="videoContainer">
-    <video id="video"  autoplay></video>
+    <video id="video" onplay="" autoplay></video>
     <canvas id="overlay" style="position: absolute;top: 0px;width: 100vw;height: 100vh;" ></canvas>
     </div>
     <div id="TimerForCapture">
@@ -214,8 +214,8 @@ var startRecordingButton = false;
 
 
 
-    video.addEventListener('play', () => {
-      setTimeout(function(){
+    function videoFunctionForDetection (){
+
         const canvas = faceapi.createCanvasFromMedia(video)
         document.body.append(canvas)
         const displaySize = { width: video.width, height: video.height }
@@ -228,6 +228,6 @@ var startRecordingButton = false;
           faceapi.draw.drawFaceLandmarks(canvas, resizedDetections)
           faceapi.draw.drawFaceExpressions(canvas, resizedDetections)
         }, 100)
-      },1000)
+
   
-    })
+    }
