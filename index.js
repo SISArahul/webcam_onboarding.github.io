@@ -36,10 +36,10 @@ var startRecordingButton = false;
     var videourl;
   
     Promise.all([
-        faceapi.nets.tinyFaceDetector.loadFromUri($("#web-root-path").val().split('\\').join('/')+'/view-resources/Views/Account/models'),
-        faceapi.nets.faceLandmark68Net.loadFromUri($("#web-root-path").val().split('\\').join('/')+'/view-resources/Views/Account/models'),
-        faceapi.nets.faceRecognitionNet.loadFromUri($("#web-root-path").val().split('\\').join('/')+'/view-resources/Views/Account/models'),
-        faceapi.nets.faceExpressionNet.loadFromUri($("#web-root-path").val().split('\\').join('/')+'/view-resources/Views/Account/models')
+        faceapi.nets.tinyFaceDetector.loadFromUri('./models'),
+        faceapi.nets.faceLandmark68Net.loadFromUri('./models'),
+        faceapi.nets.faceRecognitionNet.loadFromUri('./models'),
+        faceapi.nets.faceExpressionNet.loadFromUri('./models')
       ]).then(startWeb)
 
  
