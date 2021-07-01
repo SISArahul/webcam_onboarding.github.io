@@ -155,6 +155,7 @@ var startRecordingButton = false;
         // });
       }
       video.addEventListener('play', () => {
+        console.log(video.width, video.height,  "---------------------------")
         setTimeout(function(){
           const canvas = faceapi.createCanvasFromMedia(video)
           document.body.append(canvas)
