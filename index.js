@@ -54,8 +54,8 @@ var startRecordingButton = false;
                 alert("Please allow access to the camera");
                 navigator.mediaDevices
                   .getUserMedia({ video: {
-                    width: { ideal: 4096 },
-        height: { ideal: 2160 } 
+                    height: { min: 720, max: 1280 },
+        width: { min: 1080, max: 1920 }, 
                   }, audio: false })
                   .then(successCallback, errorCallback);
               }
@@ -74,7 +74,8 @@ var startRecordingButton = false;
     function startRecording() {
         
         recordedBlobs = [];
-        let options = {mimeType: 'video/webm;codecs=vp9,opus'};
+          let options = {mimeType: 'video/webm;codecs=vp8,opus',
+        videoBitsPerSecond : 5000000};
         
         try {
           mediaRecorder = new MediaRecorder(window.stream, options);
