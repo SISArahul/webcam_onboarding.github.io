@@ -160,12 +160,12 @@ var startRecordingButton = false;
         
         setTimeout(function(){
           console.log(canvasEl.width, canvasEl.height,  "---------------------------")
-          const displaySize = { width: canvasEl.width, height: canvasEl.height }
+          const displaySize = { width: canvasEl.width-100, height: canvasEl.height }
           faceapi.matchDimensions(canvas, displaySize)
           setInterval(async () => {
             const detections = await faceapi.detectAllFaces(video, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks().withFaceExpressions()
             const resizedDetections = faceapi.resizeResults(detections, displaySize)
-            canvas.getContext('2d').clearRect(0, 0, canvasEl.width, canvasEl.height)
+            canvas.getContext('2d').clearRect(0, 0, canvasEl.width-199, canvasEl.height)
             faceapi.draw.drawFaceLandmarks(canvas, resizedDetections)
          
           }, 100)
