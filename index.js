@@ -158,12 +158,12 @@ var startRecordingButton = false;
         setTimeout(function(){
           setInterval(async () => {
             const detections = await faceapi.detectAllFaces(video, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks().withFaceExpressions()
-           console.log(detections.lenght)
-           if(detections.lenght==0){
+           console.log(detections.length)
+           if(detections.length==0){
              console.log("No face Detected, Please put your face in the box for registration")
            }
            else{
-            if(detections.lenght>=2){
+            if(detections.length>=2){
               console.log("Multilple face Detected, Please put your face only in the box for registration")
             }
            }
