@@ -6,7 +6,7 @@ var startRecordingButton = false;
     Content.innerHTML= `
     <div id="videoContainer">
     <video id="video" autoplay></video>
-  
+      <canvas id="canvas"></canvas>
     </div>
     <div id="TimerForCapture">
     <span></span>
@@ -156,12 +156,11 @@ var startRecordingButton = false;
         // });
       }
       video.addEventListener('play', () => {
-        console.log(video.videoWidth, video.videoHeight,  "---------------------------")
+        canvasEl = document.getElementById("canvas")
+        
         setTimeout(function(){
-          console.log(video.videoWidth, video.videoHeight,  "---------------------------")
-          const canvas = faceapi.createCanvasFromMedia(video)
-          document.body.append(canvas)
-          const displaySize = { width: video.videoWidth, height: video.videoHeight }
+          console.log(canvasEl.width, canvasEl.height,  "---------------------------")
+          const displaySize = { width: canvasEl.width, height: canvasEl.height }
           faceapi.matchDimensions(canvas, displaySize)
           setInterval(async () => {
             const detections = await faceapi.detectAllFaces(video, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks().withFaceExpressions()

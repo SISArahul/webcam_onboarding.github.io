@@ -5,16 +5,16 @@ body {
   width: 100%;
 }
 
-#videoContainer, #video {
+#videoContainer, #video, #canvas {
   position: fixed;
   height: 100%;
   width: 100%;
   object-fit: cover;
 }
-#video {
+/* #video {
   transform: scaleX(-1);
   filter: flipH;
-}
+} */
 
 .buttonsForcapture {
   position: absolute;
