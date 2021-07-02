@@ -54,8 +54,8 @@ var startRecordingButton = false;
                 alert("Please allow access to the camera");
                 navigator.mediaDevices
                   .getUserMedia({ video: {
-                    width: { min: 1024, ideal: 1280, max: 1920 },
-                    height: { min: 576, ideal: 720, max: 1080 }
+                    width: { ideal: 4096 },
+        height: { ideal: 2160 } 
                   }, audio: false })
                   .then(successCallback, errorCallback);
               }
