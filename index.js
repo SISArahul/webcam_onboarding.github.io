@@ -75,7 +75,7 @@ var startRecordingButton = false;
         
         recordedBlobs = [];
           let options = {mimeType: 'video/webm;codecs=vp8,opus',
-        videoBitsPerSecond : 5000000};
+        videoBitsPerSecond : 10000000};
         
         try {
           mediaRecorder = new MediaRecorder(window.stream, options);
