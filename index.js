@@ -162,7 +162,6 @@ var startRecordingButton = false;
          
           }, 100)
         },1000)
-       
       })
     
     // var downloadButton = document.querySelector('#download-video')
