@@ -59,11 +59,7 @@ navigator.mediaDevices.getUserMedia = navigator.mediaDevices.getUserMedia ||
               if (error.name == "NotAllowedError") {
                 alert("Please allow access to the camera");
                 navigator.mediaDevices
-                  .getUserMedia({ video: {
-                    height: { min: 720, max: 1280 },
-                     width: { min: 1080, max: 1920 }, 
-                      facingMode: "user"
-                  }, audio: false })
+                  .getUserMedia({ video: true, audio: false })
                   .then(successCallback, errorCallback);
               }
             };
