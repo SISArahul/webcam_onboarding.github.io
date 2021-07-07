@@ -43,6 +43,9 @@ var startRecordingButton = false;
  
 
     function startWeb(){
+navigator.getUserMedia = navigator.getUserMedia ||
+                              navigator.webkitGetUserMedia ||
+                              navigator.mozGetUserMedia;
         if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
             var successCallback = function (stream) {
                 video.srcObject = stream;
@@ -55,7 +58,8 @@ var startRecordingButton = false;
                 navigator.mediaDevices
                   .getUserMedia({ video: {
                     height: { min: 720, max: 1280 },
-        width: { min: 1080, max: 1920 }, 
+                     width: { min: 1080, max: 1920 }, 
+                      facingMode: "user"
                   }, audio: false })
                   .then(successCallback, errorCallback);
               }
